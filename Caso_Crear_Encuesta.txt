@@ -1,0 +1,36 @@
+Actores:
+	-Primario: Administrador de Sistema CATI
+
+Pre condiciones:
+	-Administrador se encuentra registrado y logueado en Sistema
+
+Post condiciones:
+	-Se crea una nueva encuesta
+
+//Curso normal
+1.Sistema despliega pantalla de creacion de encuesta
+2.Administrador establece titulo y categoria de la encuesta
+3.Sistema valida los datos ingresados
+4.Administrador ingresa pregunta y posibles respuestas
+5.Se repite paso 4 hasta que Administrador presione guardar encuesta
+6.Sistema almacena los la encuesta generada
+7.Sistema muestra confirmación de la operacion realizada (exitosa)
+8.Sistema muestra pantalla de creacion de encuesta nuevamente
+
+//Cursos alternativos
+3.1 Sistema rechaza titulo de encuesta
+3.1.1 Sistema despliega mensaje error
+3.1.2 Sistema regresa a la pantalla de creacion de encuesta
+
+
+4.1 Administrador cancela la creacion de encuesta
+4.1.1 Sistema despliega mensaje de confimacion
+4.1.2 Administrador confirma la cancelacion
+4.1.3 Sistema aborta la creacion de encuesta
+4.1.4 Sistema regresa a la pantalla de creacion de encuesta
+
+4.1.2.1 Administrador continua la creacion de encuesta
+4.1.2.2 Sistema continua normalmente
+
+
+//Pantalla de carga incluye opción de salir
