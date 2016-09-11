@@ -1,0 +1,44 @@
+Actores:
+	-Primario: Administrador de Sistema CATI
+
+Pre condiciones:
+	-Administrador se encuentra registrado y logueado en Sistema
+
+Post condiciones:
+	-Se actualizan los contactos
+
+//Curso normal
+1.Sistema despliega pantalla de carga
+2.Administrador selecciona archivo(s) a cargar
+3.Sistema carga los archivos correctamente
+4.Sistema valida el(los) archivo(s)
+5.Administrador confirma la carga de contactos
+6.Sistema almacena los contactos contenidos en el archivo
+7.Sistema muestra confirmación de la operación realizada (exitosa)
+8.Sistema muestra pantalla de carga de archivos nuevamente
+
+//Cursos alternativos
+3.1 Administrador cancela la carga de archivos
+3.1.1 Sistema despliega mensaje de confirmación
+3.1.2 Administrador confirma la cancelación
+3.1.3 Sistema aborta la carga de archivos
+3.1.4 Sistema regresa a la pantalla de carga de archivos
+
+3.1.2.1 Administrador continua la carga de archivos
+3.1.2.2 Sistema continua normalmente
+
+5.1 Administrador cancela la carga de contactos
+5.1.1 Sistema despliega mensaje de confimación
+5.1.2 Administrador confirma la cancelación
+5.1.3 Sistema aborta la carga de contactos
+5.1.4 Sistema regresa a la pantalla de carga de archivos
+
+5.1.2.1 Administrador continua la carga de contactos
+5.1.2.2 Sistema continua normalmente
+
+
+4.1 Sistema rechaza archivo
+4.1.1 Sistema entrega mensaje de fallo
+4.1.2 Sistema despliega pantalla de carga nuevamente
+
+//Pantalla de carga incluye opción de salir
