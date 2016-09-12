@@ -1,0 +1,30 @@
+Actores:
+	-Primario: Encuestador y Encuestado del Sistema CATI.
+
+Pre condiciones:
+	-Ambos actores primarios registrado y logueados.
+	-Ambos disponibles para recibir llamadas.
+
+Post condiciones:
+	-Linea de Encuestador y Encuestado ocupada.
+	-Llamada en curso.
+
+// Curso Normal.
+1. Encuestador presiona boton para ver Usuarios Encuestado en linea.
+2. Sistema muestra a Encuestador los Usuarios en linea.
+3. Encuestador selecciona algun Usuario Encuestado disponible.
+4. Sistema muestra Encuestas disponibles y no realizadas por el Encuestado.
+5. Encuestador escoje alguna encuesta antes presionar boton llamar.
+6. Sistema realiza llamada y espera que Usuario Encuestado responda.
+
+// Cursos Alternativos.
+3.1 Encuestador no encuentra Usuarios Encuestado en linea.
+3.2 Sistema muestra mensaje: "intente mas tarde".
+
+4.1 Sistema no encuentra encuestas para realizar a Usuario Encuestado seleccionado.
+4.2 Sistema muestra mensaje: "Usuario Encuestado ya ha realizado encuestas diponibles".
+4.3 Sistema vuelve a mostrar lista de Encuestados disponible y espera nueva eleccion.
+
+6.1 Usuario Encuestado no contesta o rechaza llamada.
+6.2 Sistema muestra mensaje con lo ocurrido.
+6.3 Se registra que el Encuestado no pudo ser llamado.
