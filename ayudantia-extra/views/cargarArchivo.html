@@ -38,7 +38,17 @@
         }
 
         function submitToDB() {
-            alert('You shall not pass!')
+            document.getElementById('button').disabled = true;
+            var text = document.getElementById('data').textContent.split('\n'), x, line;
+            for(x in text){
+                line = text[x].split(',');
+                if (line.length != 4 || x == 0)
+                    continue;
+                alert(line[0]);
+                //DB CONNECT
+                //INSERT INTO _() VALUES();
+            }
+            alert(text.length);
         }
     </script>
 </head>
