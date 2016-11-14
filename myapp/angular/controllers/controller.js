@@ -1,3 +1,4 @@
+// al parecer esto no afecta
 angular.module("MiPrimerApp",[])
     .controller("MiPrimerController",function ($scope,$http) {
         $scope.title="Listar Usuario";
@@ -10,7 +11,7 @@ angular.module("MiPrimerApp",[])
 
         })
             .error(function (err) {
-                
+
             })
-        
+
     });

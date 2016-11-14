@@ -1,46 +1,26 @@
-//Dependecies
 var express = require('express');
 var router= express.Router();
 var mysql = require('mysql');
 var url = require('url');
-//var Usuario = require('../models/usuario.js');
-//var Rol= require('../models/rol.js');
-//var Usuario= require('../models/usuario.js');
 var models  = require('../models');
 
-
-
-// Routes
-/*router.get('/usuarios', function(req,res){
-	res.send('api esta funcionando');
-});*/
-
-/*router.get('/', function(req,res){
-	res.render('api', {title: 'Mi primer Aplicacion Web'});
-});*/
+// en este .js se encaminan las solicitudes a la bd
 
 //Return router
 module.exports = router;
 
-
 //GET usuarios
 router.get('/usuarios', function(req, res, next) {
 	try {
-		/*var query = url.parse(req.url,true).query;
-		 console.log(query);*/
 		models.Usuario.findAll().then(function (user) {
-			//for(var x=0;x<user.length;x++){
-			//console.log(user[x].username);
-			//res.render('VerUsuario.html', {title: 'Listar Usuarios', resultado: user});
-			res.json(user);
-			//}
+            res.json(user)
 		});
-		//res.render('VerUsuario.html', {title: 'Listar Usuarios'});
 	} catch (ex) {
 		console.error("Internal error:" + ex);
 		return next(ex);
 	}
 });
+
 //GET un usuario con id determinado
 router.get('/usuarios/:id', function(req, res, next) {
 	try {
@@ -52,11 +32,7 @@ router.get('/usuarios/:id', function(req, res, next) {
 				id: req.params.id
 			}
 		}).then(function (user) {
-			//for(var x=0;x<user.length;x++){
-			//console.log(user[x].username);
-			//console.log(user.get('username'));
 			res.json(user);
-			//}
 		});
 	} catch (ex) {
 		console.error("Internal error:" + ex);
@@ -66,23 +42,23 @@ router.get('/usuarios/:id', function(req, res, next) {
 
 //POST crear usuario
 router.post('/usuarios', function(req,res,next){
-try{
-	console.log(req.body.permiso);
-	var resultado=[];
-	models.Usuario.create({
-		username: req.body.username,
-		password: req.body.password,
-		email: req.body.email
-	}).then(function (user) {
-		models.Rol.create({
-			permiso: req.body.permiso,
-			UsuarioId: user.id
-		}).then(function (rol) {
-			resultado.push(user);
-			resultado.push(rol);
-			res.json(resultado);
+	try{
+		console.log(req.body.permiso);
+		var resultado=[];
+		models.Usuario.create({
+			username: req.body.username,
+			password: req.body.password,
+			email: req.body.email
+		}).then(function (user) {
+			models.Rol.create({
+				permiso: req.body.permiso,
+				UsuarioId: user.id
+			}).then(function (rol) {
+				resultado.push(user);
+				resultado.push(rol);
+				res.json(resultado);
+			});
 		});
-	});
 	}
 	catch(ex){
 	console.error("Internal error:"+ex);

@@ -4,10 +4,6 @@ module.exports = function(app, passport) {
         res.render('index.html', {title: 'Mi primer Aplicacion Web'});
     });
 
-    /*app.get('/prueba', function (req, res) {
-        res.render('prueba.html');
-    });*/
-
     app.get('/login', function(req, res) {
         // render the page and pass in any flash data if it exists
         res.render('login.html', { message: req.flash('loginMessage') });
@@ -41,7 +37,6 @@ module.exports = function(app, passport) {
         req.logout();
         res.redirect('/');
     });
-
 
     app.get('/verUsuario', function (req, res) {
         res.render('VerUsuario.html');
