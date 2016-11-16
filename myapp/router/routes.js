@@ -1,7 +1,10 @@
 module.exports = function(app, passport) {
+    app.get('/', function(req, res) {
+        res.redirect('/login');
+    });
 
-    app.get('/', function (req, res) {
-        res.render('index.html', {title: 'Mi primer Aplicacion Web'});
+    app.get('/home', function (req, res) {
+        res.render('index.html');
     });
 
     app.get('/login', function(req, res) {

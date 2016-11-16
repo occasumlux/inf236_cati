@@ -2,7 +2,7 @@ var app = angular.module("myApp",[]);
 
 // window.localstorage: sirve para guardar sesiones a pesar de cerrar el explorador
 // o para ocupar en otro controlador
-app.controller("myCtrl", function($scope,$http,$window) {
+app.controller("myCtrl", function($scope,$http) {
     $scope.title="Listar Usuarios";
     $scope.title2="Registrar Usuario";
     $scope.formData = {};
@@ -41,7 +41,7 @@ app.controller("myCtrl", function($scope,$http,$window) {
     };
 
     $scope.profile = function (id) {
-        $http.get('/api/usuarios/'+id)
+        $http.get('/api/usuarios/'+ id)
             .success(function (data) {
                 $scope.user = data;
                 console.log(data);

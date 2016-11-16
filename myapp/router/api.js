@@ -12,26 +12,19 @@ module.exports = router;
 //GET usuarios
 router.get('/usuarios', function(req, res, next) {
 	try {
-		models.Usuario.findAll().then(function (user) {
-            res.json(user)
+		models.Usuario.findAll().then(function (users) {
+            res.json(users)
 		});
 	} catch (ex) {
 		console.error("Internal error:" + ex);
 		return next(ex);
 	}
 });
-
 //GET un usuario con id determinado
 router.get('/usuarios/:id', function(req, res, next) {
 	try {
-		//var query = url.parse(req.url,true).query;
-		//console.log(query);
 		console.log(req.params.id);
-		models.Usuario.findAll({
-			where: {
-				id: req.params.id
-			}
-		}).then(function (user) {
+		models.Usuario.find(({where: {id: req.params.id} })).then(function (user) {
 			res.json(user);
 		});
 	} catch (ex) {
@@ -39,7 +32,6 @@ router.get('/usuarios/:id', function(req, res, next) {
 		return next(ex);
 	}
 });
-
 //POST crear usuario
 router.post('/usuarios', function(req,res,next){
 	try{
@@ -48,7 +40,9 @@ router.post('/usuarios', function(req,res,next){
 		models.Usuario.create({
 			username: req.body.username,
 			password: req.body.password,
-			email: req.body.email
+			name: req.body.password,
+			email: req.body.email,
+			number: req.body.number
 		}).then(function (user) {
 			models.Rol.create({
 				permiso: req.body.permiso,
@@ -65,7 +59,6 @@ router.post('/usuarios', function(req,res,next){
 	return next(ex);
 	}
 });
-
 router.put('/usuarios/:id', function(req,res,next){
 	try{
 
@@ -97,12 +90,11 @@ router.put('/usuarios/:id', function(req,res,next){
 		return next(ex);
 	}
 });
-
 router.delete('/usuarios/:id', function(req,res,next){
 	try{
 		models.Usuario.destroy({where: {id: req.params.id} }).then(function () {
-			return models.Usuario.findAll().then(function (user) {
-				res.json(user);
+			return models.Usuario.findAll().then(function (users) {
+				res.json(users);
 			})
 		})
 	}

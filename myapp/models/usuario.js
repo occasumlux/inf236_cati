@@ -6,13 +6,13 @@ module.exports = function(sequelize, DataTypes) {
         password: DataTypes.STRING,
         nombre: DataTypes.STRING,
         email: DataTypes.STRING,
-        admin: DataTypes.BOOLEAN,
-        nro_fono: DataTypes.INTEGER
+        //admin: DataTypes.BOOLEAN,
+        nro_fono: DataTypes.STRING
     }, {
         classMethods: {
             associate: function(models) {
                 Usuario.hasMany(models.Rol)
-                //Usuario.hasMany(models.llamada)
+                Usuario.hasMany(models.Llamada)
             }
         }
     });

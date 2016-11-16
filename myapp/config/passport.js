@@ -27,7 +27,6 @@ module.exports = function(passport) {
     passport.serializeUser(function(user, done) {
         done(null, user.id);
     });
-
     // used to deserialize the user
     passport.deserializeUser(function(id, done) {
         connection.query("select * from Usuario where id = "+id,function(err,rows){

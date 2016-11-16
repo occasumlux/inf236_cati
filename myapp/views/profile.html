@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myApp">
 <head>
     <title>Node Authentication</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
@@ -7,27 +7,27 @@
     <style>
         body        { padding-top:80px; word-wrap:break-word; }
     </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/js/sessionCtrl.js"></script>
 </head>
-<body>
-
+<body ng-controller="sessionCtrl">
 <div class="container">
-    <a href="/" class="btn btn-default btn-sm"> Home </a>
+    <a href="/home" ng-click="guardarId('<%= user.id %>')" class="btn btn-default btn-sm"> Home </a>
     <div class="page-header text-center">
         <h1><span class="fa fa-anchor"></span> Profile Page </h1>
         <a href="/logout" class="btn btn-default btn-sm"> Logout </a>
     </div>
-
     <div class="row">
-
         <!-- LOCAL INFORMATION -->
         <div class="col-sm-6">
             <div class="well">
                 <h3><span class="fa fa-user"></span> Local</h3>
-
                 <p>
                     <strong> id </strong>: <%= user.id %><br>
                     <strong> email </strong>: <%= user.email %><br>
-                    <strong> password </strong>: <%= user.password %>
+                    <strong> password </strong>: <%= user.password %><br>
                 </p>
 
             </div>
