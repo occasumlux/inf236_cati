@@ -10,7 +10,8 @@ module.exports = function (sequelize,DataTypes) {
     }, {
         classMethods: {
             associate: function (models) {
-                Entrevistado.hasMany(models.Llamada)
+                Entrevistado.hasMany(models.Llamada);
+                Entrevistado.hasMany(models.Proyecto_Entrevistado);
             }
         }
     });
