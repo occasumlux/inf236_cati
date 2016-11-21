@@ -48,6 +48,10 @@ module.exports = function(app, passport) {
     app.get('/crearUsuario', function (req, res) {
         res.render('CrearUsuario.html', {title: 'Registrar Usuarios'});
     });
+
+    app.get('/agregarEncuestado', function (req, res) {
+        res.render('AgregarEncuestado.html')
+    })
 }
 
 function isLoggedIn(req, res, next) {

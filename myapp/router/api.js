@@ -3,12 +3,10 @@ var router= express.Router();
 var mysql = require('mysql');
 var url = require('url');
 var models  = require('../models');
-
 // en este .js se encaminan las solicitudes a la bd
 
 //Return router
 module.exports = router;
-
 //GET usuarios
 router.get('/usuarios', function(req, res, next) {
 	try {
@@ -42,7 +40,7 @@ router.post('/usuarios', function(req,res,next){
 			password: req.body.password,
 			name: req.body.password,
 			email: req.body.email,
-			number: req.body.number
+			nro_fono: req.body.number
 		}).then(function (user) {
 			models.Rol.create({
 				permiso: req.body.permiso,
@@ -97,6 +95,28 @@ router.delete('/usuarios/:id', function(req,res,next){
 				res.json(users);
 			})
 		})
+	}
+	catch(ex){
+		console.error("Internal error:"+ex);
+		return next(ex);
+	}
+});
+
+///////////////////////////////////////////////////////////////////////
+router.post('/entrevistado', function(req,res,next){
+	try{
+		//console.log(req.body.permiso);
+		var resultado=[];
+		models.Entrevistado.create({
+			nombre: req.body.nombre,
+			nro_fono: req.body.number,
+			edad: req.body.edad,
+			direccion: req.body.direccion,
+			estado: req.body.estado
+		}).then(function (entrevistado) {
+				resultado.push(entrevistado);
+				res.json(resultado);
+		});
 	}
 	catch(ex){
 		console.error("Internal error:"+ex);
