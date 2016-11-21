@@ -7,9 +7,9 @@ module.exports = function(app, passport) {
     var fs = require('fs');
 
     app.get('/verArchivos/:id', isLoggedIn, function (req, res) {
-        fs.readdir('/home/daryl/Desktop/inf236_cati/Plantilla_meh/public/audio/' + req.params.id, function (files, err) {
-            if (err) res.send('La carpeta no existe');
-            res.send(files);
+        fs.readdir('/home/daryl/Desktop/inf236_cati/Plantilla_meh/public/audio', function (err, files) {
+            if(err) return res.send("La carpeta no existe");
+            return res.send(files);
         });
     });
 
