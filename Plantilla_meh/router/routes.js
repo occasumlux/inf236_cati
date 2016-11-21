@@ -7,7 +7,10 @@ module.exports = function(app, passport) {
     var fs = require('fs');
 
     app.get('/verArchivos/:id', isLoggedIn, function (req, res) {
-        fs.readdir('/home/Desktop/INF236/');
+        fs.readdir('/home/daryl/Desktop/inf236_cati/Plantilla_meh/public/audio/' + req.params.id, function (files, err) {
+            if (err) res.send('La carpeta no existe');
+            res.send(files);
+        });
     });
 
     app.get('/', function (req, res) {
@@ -74,7 +77,7 @@ module.exports = function(app, passport) {
         res.render('SubirArchivo.html');
     });
 
-}
+};
 
 function isLoggedIn(req, res, next) {
 
