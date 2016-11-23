@@ -103,6 +103,7 @@ router.delete('/usuarios/:id', function(req,res,next){
 });
 
 ///////////////////////////////////////////////////////////////////////
+// agrega entrevistado a BD
 router.post('/entrevistado', function(req,res,next){
 	try{
 		//console.log(req.body.permiso);
@@ -120,6 +121,17 @@ router.post('/entrevistado', function(req,res,next){
 	}
 	catch(ex){
 		console.error("Internal error:"+ex);
+		return next(ex);
+	}
+});
+
+router.get('/encuestados', function(req, res, next) {
+	try {
+		models.Entrevistado.findAll().then(function (Entrevistados) {
+			res.json(Entrevistados)
+		});
+	} catch (ex) {
+		console.error("Internal error:" + ex);
 		return next(ex);
 	}
 });

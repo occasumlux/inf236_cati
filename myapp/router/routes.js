@@ -42,7 +42,7 @@ module.exports = function(app, passport) {
     });
 
     app.get('/verUsuario', function (req, res) {
-        res.render('VerUsuario.html');
+        res.render('VerUsuarios.html');
     });
 
     app.get('/crearUsuario', function (req, res) {
@@ -51,7 +51,23 @@ module.exports = function(app, passport) {
 
     app.get('/agregarEncuestado', function (req, res) {
         res.render('AgregarEncuestado.html')
-    })
+    });
+
+    app.get('/verEncuestados', function (req, res) {
+        res.render('VerEncuestados.html')
+    });
+
+    app.get('/verEncuesta',isLoggedIn, function (req, res) {
+        res.render('VerEncuesta.html');
+    });
+
+    app.get('/Llamar',isLoggedIn, function (req, res) {
+        res.render('Llamar.html');
+    });
+
+    app.get('/Subir',isLoggedIn, function (req, res) {
+        res.render('subirArchivo.html');
+    });
 }
 
 function isLoggedIn(req, res, next) {

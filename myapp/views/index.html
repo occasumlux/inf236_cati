@@ -45,8 +45,28 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
               aria-expanded="false"> Opciones <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="/verUsuario">Ver Usuario</a></li>
+              <li><a href="/verUsuario">Ver Usuarios</a></li>
               <li><a href="/crearUsuario">Crear Usuario</a></li>
+              <li><a href="/verEncuestados">Ver Entrevistados</a></li>
+              <li><a href="/AgregarEncuestado">Agregar Entrevistado</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Encuesta <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/verEncuesta">Ver Encuesta</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Llamado <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/Llamar">Llamar</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">BD <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/Subir">Subir archivo</a></li>
             </ul>
           </li>
         </ul>
@@ -56,13 +76,23 @@
           </div>
           <button type="submit" class="btn btn-default"> Buscar llamadas </button>
         </form>
+        <ul class="nav navbar-nav navbar-left">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+               aria-expanded="false"> Proyecto <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="/#"> Crear Nuevo Proyecto </a></li>
+              <li><a href="/#"> Ver Proyectos Actuales </a></li>
+            </ul>
+          </li>
+        </ul>
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                aria-expanded="false">Bienvenido Usuario! <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li><a href="/profile">Ver Perfil</a></li>
-              <li><a href="/logout#">Cerrar Sesión</a></li>
+              <li><a href="/logout">Cerrar Sesión</a></li>
             </ul>
           </li>
         </ul>

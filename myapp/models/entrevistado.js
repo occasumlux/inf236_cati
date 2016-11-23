@@ -3,9 +3,9 @@ var Sequelize = require('sequelize');
 module.exports = function (sequelize,DataTypes) {
     var Entrevistado = sequelize.define("Entrevistado", {
         nombre: DataTypes.STRING,
-        nro_fono: DataTypes.INTEGER,
         edad: DataTypes.INTEGER,
         direccion: DataTypes.STRING,
+        nro_fono: DataTypes.INTEGER,
         estado: DataTypes.STRING
     }, {
         classMethods: {

@@ -12,7 +12,7 @@ var opts = {
         freezeTableName: true
     }
 }
-var sequelize = new Sequelize('ADSW', 'root', 'mysqlroot',opts);
+var sequelize = new Sequelize('new_schema_meh', 'root', 'root',opts);
 var db        = {};
 
 fs
