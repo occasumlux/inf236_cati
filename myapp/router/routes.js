@@ -68,6 +68,11 @@ module.exports = function(app, passport) {
     app.get('/Subir',isLoggedIn, function (req, res) {
         res.render('subirArchivo.html');
     });
+
+    app.get('/crearProyecto',isLoggedIn, function (req, res) {
+        res.render('CrearProyecto.html');
+    });
+
 }
 
 function isLoggedIn(req, res, next) {
