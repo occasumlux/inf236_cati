@@ -78,7 +78,13 @@
         <h2>File content is:</h2>
         <pre>{{ content }}</pre>
     </div>
+
+    <div ng-if="content">
+        <button class="btn btn-primary btn-sm" type="button" mw-confirm-click="upload('meh')" mw-confirm-click-message="¿Deseas enviar a la base de datos?"> Enviar </button>
+    </div>
 </div>
 
+
 </body>
+
 </html>
