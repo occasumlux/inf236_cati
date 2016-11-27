@@ -13,11 +13,11 @@ myapp.controller('uploadCtrl', function ($scope, $http) {
             if (line.length != 4 || x == 0)//First line don't have information
                 continue;
             $http.post('/api/entrevistado',
-                {nombre: line[0] + " " + line[1],
+                {nombre: capitalizeFirstLetter(line[0]) + " " + capitalizeFirstLetter(line[1]),
                     number: parseInt(line[2]),
                     edad: 0,
                     direccion: "Desconocida",
-                    estado: line[3]})
+                    estado: capitalizeFirstLetter(line[3])})
                 .success(function(data) {
                     console.log(data);
                 })
@@ -70,3 +70,7 @@ myapp.directive( "mwConfirmClick", [
         }
     }
 ]);
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
