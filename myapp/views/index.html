@@ -26,7 +26,7 @@
   </head>
   <body ng-controller="homeCtrl">
   <!--franja de arriba -->
-  <nav class="navbar navbar-default">
+  <nav class="navbar navbar-default" style="margin:0">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
@@ -43,7 +43,7 @@
         <ul class="nav navbar-nav">
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-              aria-expanded="false"> Opciones <span class="caret"></span></a>
+               aria-expanded="false"> Opciones <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li><a href="/verUsuario">Ver Usuarios</a></li>
               <li><a href="/crearUsuario">Crear Usuario</a></li>
@@ -55,6 +55,8 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Encuesta <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
               <li><a href="/verEncuesta">Ver Encuesta</a></li>
+              <li><a href="/crearEncuesta"> Crear nueva encuesta </a></li>
+              <li><a href="#"> Ver encuestas </a></li>
             </ul>
           </li>
           <li class="dropdown">
@@ -70,19 +72,13 @@
             </ul>
           </li>
         </ul>
-        <form class="navbar-form navbar-right">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
-          </div>
-          <button type="submit" class="btn btn-default"> Buscar llamadas </button>
-        </form>
         <ul class="nav navbar-nav navbar-left">
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                aria-expanded="false"> Proyecto <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li><a href="/crearProyecto"> Crear Nuevo Proyecto </a></li>
-              <li><a href="/#"> Ver Proyectos Actuales </a></li>
+              <li><a href="#"> Ver Proyectos Actuales </a></li>
             </ul>
           </li>
         </ul>
@@ -96,6 +92,12 @@
             </ul>
           </li>
         </ul>
+        <form class="navbar-form navbar-right">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+          </div>
+          <button type="submit" class="btn btn-default"> Buscar llamadas </button>
+        </form>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>

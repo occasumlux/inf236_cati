@@ -1,7 +1,7 @@
 angular.module("myApp",[])
     .controller("homeCtrl", function($scope, $http, $window) {
         $scope.title = " Software CATI ";
-        $scope.title2 = " Bienvenido "
+        $scope.title2 = " Bienvenido ";
 
         if($window.localStorage['id'] == 0){
             $window.location.href="/home";

@@ -136,3 +136,15 @@ router.get('/encuestados', function(req, res, next) {
 	}
 });
 
+//GET projects
+router.get('/projects', function(req, res, next) {
+    try {
+        models.Proyecto.findAll().then(function (users) {
+            res.json(users)
+        });
+    } catch (ex) {
+        console.error("Internal error:" + ex);
+        return next(ex);
+    }
+});
+

@@ -73,6 +73,10 @@ module.exports = function(app, passport) {
         res.render('CrearProyecto.html');
     });
 
+    app.get('/crearEncuesta',isLoggedIn, function (req, res) {
+        res.render('CrearEncuesta.html');
+    });
+
 };
 
 function isLoggedIn(req, res, next) {
