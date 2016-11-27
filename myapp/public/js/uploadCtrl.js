@@ -6,17 +6,27 @@ myapp.controller('uploadCtrl', function ($scope, $http) {
     };
 
     $scope.upload = function (message) {
-        alert(message);
-        console.log($scope.content);
+        //console.log($scope.content);
         var text = $scope.content.split('\n'), x, line;
         for(x in text) {
             line = text[x].split(',');//[name, lastName, number, status]
             if (line.length != 4 || x == 0)//First line don't have information
                 continue;
-            alert(line[0]);//Name
-            //$http.post('/entrevistado', {});//Send information to DB
+            $http.post('/api/entrevistado',
+                {nombre: line[0] + " " + line[1],
+                    number: parseInt(line[2]),
+                    edad: 0,
+                    direccion: "Desconocida",
+                    estado: line[3]})
+                .success(function(data) {
+                    console.log(data);
+                })
+                .error(function(data) {
+                    console.log('Error:' + data);
+                });//Send information to DB
         }
-        alert(text.length);//Debug, number of lines
+        $scope.content = null;
+        alert(message);
     }
 });
 

@@ -3,7 +3,7 @@ module.exports = function(app, passport) {
         res.redirect('/login');
     });
 
-    app.get('/home', function (req, res) {
+    app.get('/home', isLoggedIn, function (req, res) {
         res.render('index.html');
     });
 
@@ -41,19 +41,19 @@ module.exports = function(app, passport) {
         res.redirect('/');
     });
 
-    app.get('/verUsuario', function (req, res) {
+    app.get('/verUsuario', isLoggedIn, function (req, res) {
         res.render('VerUsuarios.html');
     });
 
-    app.get('/crearUsuario', function (req, res) {
+    app.get('/crearUsuario', isLoggedIn, function (req, res) {
         res.render('CrearUsuario.html', {title: 'Registrar Usuarios'});
     });
 
-    app.get('/agregarEncuestado', function (req, res) {
+    app.get('/agregarEncuestado', isLoggedIn, function (req, res) {
         res.render('AgregarEncuestado.html')
     });
 
-    app.get('/verEncuestados', function (req, res) {
+    app.get('/verEncuestados', isLoggedIn, function (req, res) {
         res.render('VerEncuestados.html')
     });
 
@@ -73,7 +73,7 @@ module.exports = function(app, passport) {
         res.render('CrearProyecto.html');
     });
 
-}
+};
 
 function isLoggedIn(req, res, next) {
 
