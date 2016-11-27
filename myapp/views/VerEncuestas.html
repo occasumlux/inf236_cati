@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="myApp">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title> Ver Encuestas </title>
+
+    <!-- Bootstrap -->
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://bootswatch.com/united/bootstrap.min.css">
     <link rel="stylesheet" href="https://bootswatch.com/united/bootstrap.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src=""></script>
-    <title>Llamar</title>
+    <script src="/js/surveyCtrl.js"></script>
 </head>
+<body ng-controller="surveyCtrl">
 
-<body ng-controller="">
 <nav class="navbar navbar-default" style="margin:0">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -90,12 +95,34 @@
     </div><!-- /.container-fluid -->
 </nav>
 
-<div id = "meh" style="width: 5%">
-    <a href="skype:echo123?call" style="z-index: 1; display: block">
-        <!---<img src="http://seeklogo.com/images/S/skype-icon-logo-62E333BBBA-seeklogo.com.gif" >--->
-        <object data="https://upload.wikimedia.org/wikipedia/en/c/c3/Microsoft_Skype_for_Business_logo.svg" style="z-index: -1; pointer-events: none;width: 100%"></object>
-    </a>
+<div>
+    <h1>Lista de encuestas</h1>
 </div>
+
+<table class="table" id="table">
+    <thead>
+    <tr>
+        <th> ID </th>
+        <th> Nombre </th>
+        <th> Id Proyecto </th>
+        <th> URL </th>
+        <th> Acciones </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="survey in surveys">
+        <td>{{survey.id}}</td>
+        <td>{{survey.name}}</td>
+        <td>{{survey.ProyectoId}}</td>
+        <td>{{survey.url}}</td>
+        <td>
+            <button class="btn btn-primary btn-sm" type="button" ng-click=""> Ver </button>
+            <button class="btn btn-primary btn-sm" type="button"                           > Modificar </button>
+            <a href="/verEncuesta" class="btn btn-primary btn-sm">Click</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
 
 </body>
 </html>

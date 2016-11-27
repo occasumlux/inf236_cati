@@ -139,8 +139,8 @@ router.get('/encuestados', function(req, res, next) {
 //GET projects
 router.get('/projects', function(req, res, next) {
     try {
-        models.Proyecto.findAll().then(function (users) {
-            res.json(users)
+        models.Proyecto.findAll().then(function (projects) {
+            res.json(projects)
         });
     } catch (ex) {
         console.error("Internal error:" + ex);
@@ -148,3 +148,33 @@ router.get('/projects', function(req, res, next) {
     }
 });
 
+//POST crear entrevista
+router.post('/survey', function(req,res,next){
+    try{
+        var resultado=[];
+        models.Entrevista.create({
+            url: req.body.url,
+            name: req.body.name,
+            ProyectoId: req.body.project
+        }).then(function (survey) {
+            resultado.push(survey);
+            res.json(resultado);
+        });
+    }
+    catch(ex){
+        console.error("Internal error:"+ex);
+        return next(ex);
+    }
+});
+
+//GET surveys
+router.get('/surveys', function(req, res, next) {
+    try {
+        models.Entrevista.findAll().then(function (surveys) {
+            res.json(surveys)
+        });
+    } catch (ex) {
+        console.error("Internal error:" + ex);
+        return next(ex);
+    }
+});

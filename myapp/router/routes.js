@@ -77,6 +77,10 @@ module.exports = function(app, passport) {
         res.render('CrearEncuesta.html');
     });
 
+    app.get('/verEncuestas',isLoggedIn, function (req, res) {
+        res.render('VerEncuestas.html');
+    });
+
 };
 
 function isLoggedIn(req, res, next) {
