@@ -9,7 +9,7 @@ var opts = {
         freezeTableName: true
     }
 }
-var sequelize = new Sequelize('ADSW', 'root', 'mysqlroot',opts);
+var sequelize = new Sequelize('ADSW', 'root', 'soul12',opts);
 var db        = {};
 
 fs

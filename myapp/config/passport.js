@@ -11,7 +11,7 @@ var mysql = require('mysql');
 var connection = mysql.createConnection({
     host     : 'localhost',
     user     : 'root',
-    password : 'mysqlroot'
+    password : 'soul12'
 });
 
 connection.query('USE ADSW');

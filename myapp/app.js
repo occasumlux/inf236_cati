@@ -38,7 +38,7 @@ app.use(express.static(path.join(__dirname, 'angular')));
 require('./router/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
 require('./config/passport')(passport); // pass passport for configuration
 app.use(express.static('public'));
-
+app.use(express.static('views'));
 
 var nodeadmin = require('nodeadmin');
 app.use(nodeadmin(app));
