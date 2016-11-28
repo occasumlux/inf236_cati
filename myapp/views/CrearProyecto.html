@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myApp">
 <head>
 
     <meta charset="utf-8">
@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-    <title>Title</title>
+    <title> New </title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://bootswatch.com/united/bootstrap.min.css">
@@ -16,8 +16,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-resource.js"></script>
 
+    <script src="/js/proyectoCtrl.js"></script>
+    <script src="/js/encuestadoCtrl.js"></script>
+
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/stylesheet/styleformproyecto.css">
+    <link rel="stylesheet" href="../public/stylesheet/styleformproyecto.css">
 </head>
 <body>
 
@@ -27,22 +31,49 @@
         <h3> Escoge un nombre llamativo para tu proyecto </h3>
     </div>
     <div class="row body">
-        <form action="/home">
+        <form ng-controller="proyectoCtrl">
             <ul>
                 <li>
                     <p class="left">
-                        <label for="first_name"> Nombre del Proyecto </label>
-                        <input type="text" name="first_name" placeholder="Nuevo Proyecto CATI" />
+                        <label> Nombre del Proyecto </label>
+                        <input type="text" ng-model="formData.nombre" placeholder="Nuevo Proyecto CATI" />
+                    </p>
+                    <p class="right" ng-controller="encuestadoCtrl">
+                        <label> Indique a quienes Encuestar en el Proyecto </label>
+                        <label ng-repeat="encuestado in encuestados">
+                            <input type="checkbox" value="{{encuestado.id}}"
+                                   ng-model="formData.encuestado{{+$index}}"> {{encuestado.nombre}}
+                        </label>
                     </p>
                 </li>
+                <li>
+                    <label> Añadir links de Encuestas para el Proyecto </label>
+                    <button type="button" onclick="anadirEncuestado()" > Añadir Encuesta </button>
+                    <ul id="mis encuestas">
+                    </ul>
+                    <script>
+                        var j = 0;
+                        function anadirEncuestado() {
+                            j++
+                            var node2 = document.createElement("LI");
+                            var inputUrl = document.createElement("INPUT");
+                            inputUrl.setAttribute("type", "text");
+                            inputUrl.setAttribute("placeholder", "Ingrese url de la encuesta");
+                            inputUrl.setAttribute("ng-model", "formData.url"+j);
+                            node2.appendChild(inputUrl);
+                            document.getElementById("mis encuestas").appendChild(node2);
+                        }
+                    </script>
+                </li>
+
                 <li><div class="divider"></div></li>
                 <li>
-                    <label for="comments">Descripcion del Proyecto</label>
-                    <textarea cols="46" rows="3" name="comments"></textarea>
+                    <label> Descripcion del Proyecto </label>
+                    <textarea cols="46" rows="3" ng-model="formData.descripcion"></textarea>
                 </li>
 
                 <li>
-                    <input class="btn btn-submit" type="submit" value="Crear" />
+                    <input class="btn btn-submit" type="button" ng-click="crearProyecto()" value="Crear" />
                     <small>or press <strong>enter</strong></small>
                 </li>
 
@@ -51,4 +82,4 @@
     </div>
 </div>
 </body>
-</html>
+</html>>
