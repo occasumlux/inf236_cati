@@ -180,7 +180,7 @@ router.get('/surveys', function(req, res, next) {
 });
 
 //GET one survey
-router.get('/survey:id', function(req, res, next) {
+router.get('/survey/:id', function(req, res, next) {
     try {
         console.log(req.params.id);
         models.Entrevista.find(({where: {id: req.params.id} })).then(function (survey) {

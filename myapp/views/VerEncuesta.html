@@ -14,7 +14,7 @@
     <title>Ver Encuesta</title>
 
 </head>
-<body ng-controller="displaySurveyCtrl">
+<body>
 <nav class="navbar navbar-default" style="margin:0">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -91,7 +91,9 @@
     </div><!-- /.container-fluid -->
 </nav>
 
-<iframe src="<%= surveyURL %>" style="position:fixed;width:100%; height:100%; border:none;z-index:0;">
+<p hidden id="id"><%= surveyID %></p>
+
+<iframe ng-controller="displaySurveyCtrl" src="{{surveyURL}}" style="position:fixed;width:100%; height:100%; border:none;z-index:0;">
     <p>Your browser does not support iframes.</p>
 </iframe>
 

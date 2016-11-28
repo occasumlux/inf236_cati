@@ -116,13 +116,8 @@
         <td>{{survey.ProyectoId}}</td>
         <td>{{survey.url}}</td>
         <td>
-            <button class="btn btn-primary btn-sm" type="button" ng-click=""> Ver </button>
+            <a href="/verEncuesta/{{survey.id}}" class="btn btn-primary btn-sm">Ver</a>
             <button class="btn btn-primary btn-sm" type="button"                           > Modificar </button>
-            <a href="/verEncuesta/{{survey.id}}" class="btn btn-primary btn-sm">Click</a>
-            <form action="/verEncuesta" method="post">
-                <input type="hidden" name="surveyURL" value="{{survey.url}}">
-            <button type="submit" class="btn btn-primary btn-sm">Login</button>
-            </form>
         </td>
     </tr>
     </tbody>

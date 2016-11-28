@@ -57,14 +57,9 @@ module.exports = function(app, passport) {
         res.render('VerEncuestados.html')
     });
 
-    app.get('/verEncuesta',isLoggedIn, function (req, res) {
+    app.get('/verEncuesta/:id',isLoggedIn, function (req, res) {
         //var surveyID = req.params.id;
-        res.render('VerEncuesta.html');
-    });
-
-    app.post('/verEncuesta',isLoggedIn, function (req, res) {
-        //var surveyID = req.params.id;
-        res.render('VerEncuesta.html', {surveyURL: req.params.surveyURL});
+        res.render('VerEncuesta.html', {surveyID: req.params.id});
     });
 
     app.get('/Llamar',isLoggedIn, function (req, res) {
