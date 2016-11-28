@@ -58,7 +58,13 @@ module.exports = function(app, passport) {
     });
 
     app.get('/verEncuesta',isLoggedIn, function (req, res) {
+        //var surveyID = req.params.id;
         res.render('VerEncuesta.html');
+    });
+
+    app.post('/verEncuesta',isLoggedIn, function (req, res) {
+        //var surveyID = req.params.id;
+        res.render('VerEncuesta.html', {surveyURL: req.params.surveyURL});
     });
 
     app.get('/Llamar',isLoggedIn, function (req, res) {

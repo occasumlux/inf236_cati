@@ -178,3 +178,16 @@ router.get('/surveys', function(req, res, next) {
         return next(ex);
     }
 });
+
+//GET one survey
+router.get('/survey:id', function(req, res, next) {
+    try {
+        console.log(req.params.id);
+        models.Entrevista.find(({where: {id: req.params.id} })).then(function (survey) {
+            res.json(survey);
+        });
+    } catch (ex) {
+        console.error("Internal error:" + ex);
+        return next(ex);
+    }
+});
