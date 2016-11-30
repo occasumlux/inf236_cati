@@ -1,4 +1,6 @@
 module.exports = function(app, passport) {
+    var fs = require('fs');
+
     app.get('/', function(req, res) {
         res.redirect('/login');
     });
@@ -80,6 +82,19 @@ module.exports = function(app, passport) {
 
     app.get('/verEncuestas',isLoggedIn, function (req, res) {
         res.render('VerEncuestas.html');
+    });
+    app.get('/verAudios', isLoggedIn, function (req, res) {
+        res.render('VerAudios.html');
+    });
+
+    app.get('/verListaArchivos', function (req, res) {
+        fs.readdir(__dirname+"/../audios" ,
+            function (err, files) {
+                if (err){
+                    return res.send("La carpeta no existe");
+                }
+                res.send(files)
+            });
     });
 
 };

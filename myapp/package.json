@@ -13,6 +13,7 @@
     "express": "^4.10.6",
     "express-myconnection": "^1.0.4",
     "express-session": "~1.14.0",
+    "fs": "0.0.1-security",
     "method-override": "~2.3.6",
     "morgan": "~1.7.0",
     "mysql": "^2.5.4",
