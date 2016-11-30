@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>CATI</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/docs.css" rel="stylesheet">
+    <link href="js/google-code-prettify/prettify.css" rel="stylesheet">
+    <link rel="shortcut icon" href="ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-resource.js"></script>
+    <script type="text/javascript" src="/js/surveyCtrl.js"></script>
+
+</head>
+<body ng-controller="surveyCtrl">
+<div class="jumbotron masthead">
+    <div class="splash"> <img src="img/2.jpg" alt=""> </div>
+    <div class="nav-agency">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container"> <a class="brand" href="/home"> <img src="img/Logo.png" alt=""></a>
+                    <div id="main-nav">
+                        <div class="nav-collapse collapse">
+                            <ul class="nav">
+                                <li class="active"><a href="/home">Home</a> </li>
+                                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"> Opciones <b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="/verUsuario">Ver Usuarios</a></li>
+                                        <li><a href="/crearUsuario">Crear Usuario</a></li>
+                                        <li><a href="/verEncuestados">Ver Entrevistados</a></li>
+                                        <li><a href="/AgregarEncuestado">Agregar Entrevistado</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"> Encuesta <b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="/verEncuestas">Ver Encuesta</a></li>
+                                        <li><a href="/crearEncuesta"> Crear nueva encuesta </a></li>
+                                        <li><a href="#"> Ver encuestas </a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> LLamado <b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="/Llamar">Llamar</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">BD <span class="caret"></span></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="/Subir">Subir archivo</a></li>
+                                        <li><a href="/VerAudios">Exportar Audios</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"> Proyecto <b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="/crearProyecto"> Crear Nuevo Proyecto </a></li>
+                                        <li><a href="#"> Ver Proyectos Actuales </a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                                       aria-expanded="false">{{user.username}}<span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="/profile">Ver Perfil</a></li>
+                                        <li><a href="/logout">Cerrar Sesión</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page-header text-center" align="center">
+    <h1>Crear Encuesta</h1>
+</div>
+<div id="survey_form" class="row" align="center">
+    <div class="col-sm-8 col-sm-offset-2 text-center">
+        <form>
+            <div class="form-group">
+                <input type="text" class="form-control input-lg text-center" placeholder="Inserta nombre de la encuesta"
+                       ng-model="formData.name">
+                <input type="url" class="form-control input-lg text-center" placeholder="Inserta URL de la encuesta"
+                       ng-model="formData.url">
+                <select class="form-control input-lg text-center" id="project" name="project"
+                        ng-model="formData.project" required>
+                    <option ng-repeat="project in projects" value="{{project.id}}"> {{project.nombre}} </option>
+                </select>
+            </div>
+            <button class="btn btn-primary btn-lg" ng-click="createSurvey()">
+                Añadir
+            </button>
+        </form>
+    </div>
+</div>
+
+
+
+<footer class="footer">
+    <div class="container">
+        <div class="row-fluid">
+            <div class="span12">
+                <blockquote>
+                    <p class="testimonial">Algunas personas sueñan con hacer grandes cosas, mientras otras están despiertas y las hacen.</p>
+                    <p class="name"><b></b></p>
+                </blockquote>
+            </div>
+        </div>
+        <hr class="soften1">
+        <div class="row-fluid">
+            <div class="span3">
+                <h4>Navegacion</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Work</a></li>
+                    <li><a href="#">Elements</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+            <div class="span3 MT70">
+                <h4>Link de Utilidad</h4>
+                <ul class="footer-links">
+                    <li><a href="https://www.usm.cl">www.usm.cl</a></li>
+                    <li><a href="https://www.industrias.usm.cl">www.industrias.usm.cl</a></li>
+                    <li><a href="https://www.inf.utfsm.cl">www.inf.utfsm.cl</a></li>
+                    <li><a href="https://www.siga.usm.cl">www.siga.usm.cl</a></li>
+                </ul>
+            </div>
+            <div class="span3 MT70">
+                <h4>Redes Sociales</h4>
+                <p></p>
+                <ul class="footer_social clearfix">
+                    <li><a href="#" class="footer_facebook">Facebook</a></li>
+                    <li><a href="#" class="footer_twitter">Twitter</a></li>
+                    <li><a href="#" class="footer_googleplus">Google+</a></li>
+                    <li><a href="#" class="footer_rss">RSS</a></li>
+                </ul>
+            </div>
+        </div>
+        <hr class="soften1 copyhr">
+        <div class="row-fluid copyright">
+            <div class="span12">Copyright &copy; 2016. ADSW</div>
+        </div>
+    </div>
+</footer>
+<script src="http://platform.twitter.com/widgets.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/google-code-prettify/prettify.js"></script>
+<script src="js/bootstrap-transition.js"></script>
+<script src="js/bootstrap-alert.js"></script>
+<script src="js/bootstrap-modal.js"></script>
+<script src="js/bootstrap-dropdown.js"></script>
+<script src="js/bootstrap-scrollspy.js"></script>
+<script src="js/bootstrap-tab.js"></script>
+<script src="js/bootstrap-tooltip.js"></script>
+<script src="js/bootstrap-popover.js"></script>
+<script src="js/bootstrap-button.js"></script>
+<script src="js/bootstrap-collapse.js"></script>
+<script src="js/bootstrap-carousel.js"></script>
+<script src="js/bootstrap-typeahead.js"></script>
+<script src="js/bootstrap-affix.js"></script>
+<script src="js/application.js"></script>
+<script src="js/superfish.js"></script>
+<script src="js/custom.js"></script>
+<script>
+    $(document).ready(function () {
+        var showCaseItems = $('.show-case-item').hide();
+        var splashes = $('.splash').hide();
+        splashes.eq(0).show();
+        showCaseItems.eq(0).show();
+        var prevIndex = -1;
+        var nextIndex = 0;
+        var currentIndex = 0;
+        $('#banner-pagination li a').click(function () {
+            nextIndex = parseInt($(this).attr('rel'));
+            if (nextIndex != currentIndex) {
+                $('#banner-pagination li a').html('<img src="img/slidedot.png" alt="slide">');
+                $(this).html('<img src="img/slidedot-active.png" alt="slide">');
+                currentIndex = nextIndex;
+                if (prevIndex < 0) prevIndex = 0;
+                splashes.eq(prevIndex).css({
+                    opacity: 1
+                }).animate({
+                    opacity: 0
+                }, 500, function () {
+                    $(this).hide();
+                });
+                splashes.eq(nextIndex).show().css({
+                    opacity: 0
+                }).animate({
+                    opacity: 1
+                }, 500, function () {});
+                showCaseItems.eq(prevIndex).css({
+                    opacity: 1
+                }).animate({
+                    opacity: 0
+                }, 500, function () {
+                    $(this).hide();
+                    showCaseItems.eq(nextIndex).show().css({
+                        opacity: 0
+                    }).animate({
+                        opacity: 1
+                    }, 200, function () {});
+                });
+                prevIndex = nextIndex;
+            }
+            return false;
+        });
+    });
+</script>
+</body>
+</html>

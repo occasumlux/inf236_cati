@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://bootswatch.com/united/bootstrap.min.css">
+    <link rel="stylesheet" href="https://bootswatch.com/united/bootstrap.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/js/displaySurveyCtrl.js"></script>
+
+    <title>Ver Encuesta</title>
+
+</head>
+<body>
+<nav class="navbar navbar-default" style="margin:0">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/home"> home </a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false"> Opciones <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/verUsuario">Ver Usuarios</a></li>
+                        <li><a href="/crearUsuario">Crear Usuario</a></li>
+                        <li><a href="/verEncuestados">Ver Entrevistados</a></li>
+                        <li><a href="/AgregarEncuestado">Agregar Entrevistado</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Encuesta <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="/verEncuesta">Ver Encuesta</a></li>
+                        <li><a href="/crearEncuesta"> Crear nueva encuesta </a></li>
+                        <li><a href="/verEncuestas"> Ver encuestas </a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Llamado <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="/Llamar">Llamar</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">BD <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="/Subir">Subir archivo</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false"> Proyecto <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/crearProyecto"> Crear Nuevo Proyecto </a></li>
+                        <li><a href="#"> Ver Proyectos Actuales </a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">Bienvenido Usuario! <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/profile">Ver Perfil</a></li>
+                        <li><a href="/logout">Cerrar Sesión</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <form class="navbar-form navbar-right">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                </div>
+                <button type="submit" class="btn btn-default"> Buscar llamadas </button>
+            </form>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<p hidden id="id"><%= surveyID %></p>
+
+<iframe ng-controller="displaySurveyCtrl" src="{{surveyURL}}" style="position:fixed;width:100%; height:100%; border:none;z-index:0;">
+    <p>Your browser does not support iframes.</p>
+</iframe>
+
+</body>
+
+</html>
