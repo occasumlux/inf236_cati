@@ -9,7 +9,7 @@ var opts = {
         freezeTableName: true
     }
 }
-var sequelize = new Sequelize('new_schema', 'root', 'root',opts);
+var sequelize = new Sequelize('new_schema', 'root', 'soul12',opts);
 var db        = {};
 
 fs

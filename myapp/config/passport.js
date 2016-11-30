@@ -11,7 +11,7 @@ var mysql = require('mysql');
 var connection = mysql.createConnection({
     host     : 'localhost',
     user     : 'root',
-    password : 'root'
+    password : 'soul12'
 });
 
 connection.query('USE new_schema');

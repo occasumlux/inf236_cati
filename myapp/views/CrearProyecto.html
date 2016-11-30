@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-    <title> New </title>
+    <title> CATI </title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://bootswatch.com/united/bootstrap.min.css">
@@ -25,7 +25,7 @@
 </head>
 <body>
 
-<div class="container">
+<div class="container" align="center">
     <div class="row header">
         <h1> Nuevo Proyecto &nbsp;</h1>
         <h3> Escoge un nombre llamativo para tu proyecto </h3>
@@ -41,14 +41,29 @@
                     <p class="right">
                         <label> Indique a quienes Encuestar en el Proyecto </label>
                         <label ng-repeat="encuestado in encuestados">
-                            <input type="checkbox"
-                                   name="selectedEntrevistados[]"
-                                   value="{{encuestado.id}}"
-                                   ng-checked="selection.indexOf(encuestado.id) > -1"
-                                   ng-click="toggleSelection(encuestado.id)"
-                            > {{encuestado.nombre}}
+                            <input type="checkbox" value="{{encuestado.id}}"
+                                   ng-model="formData.encuestado{{+$index}}"> {{encuestado.nombre}}
                         </label>
                     </p>
+                </li>
+                <li>
+                    <label> Añadir links de Encuestas para el Proyecto </label>
+                    <button type="button" onclick="anadirEncuestado()" > Añadir Encuesta </button>
+                    <ul id="mis encuestas">
+                    </ul>
+                    <script>
+                        var j = 0;
+                        function anadirEncuestado() {
+                            j++;
+                            var node2 = document.createElement("LI");
+                            var inputUrl = document.createElement("INPUT");
+                            inputUrl.setAttribute("type", "text");
+                            inputUrl.setAttribute("placeholder", "Ingrese url de la encuesta");
+                            inputUrl.setAttribute("ng-model", "formData.url"+j);
+                            node2.appendChild(inputUrl);
+                            document.getElementById("mis encuestas").appendChild(node2);
+                        }
+                    </script>
                 </li>
 
                 <li><div class="divider"></div></li>

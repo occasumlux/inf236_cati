@@ -1,116 +1,249 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="myApp">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title> Home </title>
+<head>
+  <title>CATI</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://bootswatch.com/united/bootstrap.min.css">
-    <link rel="stylesheet" href="https://bootswatch.com/united/bootstrap.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="/js/homeCtrl.js"></script>
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <link href="css/bootstrap-responsive.css" rel="stylesheet">
+  <link href="css/docs.css" rel="stylesheet">
+  <link href="js/google-code-prettify/prettify.css" rel="stylesheet">
+  <link rel="shortcut icon" href="ico/favicon.ico">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body ng-controller="homeCtrl">
-  <!--franja de arriba -->
-  <nav class="navbar navbar-default" style="margin:0">
-    <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="/home"> home </a>
-      </div>
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-               aria-expanded="false"> Opciones <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a href="/verUsuario">Ver Usuarios</a></li>
-              <li><a href="/crearUsuario">Crear Usuario</a></li>
-              <li><a href="/verEncuestados">Ver Entrevistados</a></li>
-              <li><a href="/AgregarEncuestado">Agregar Entrevistado</a></li>
-            </ul>
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Encuesta <span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="/verEncuesta">Ver Encuesta</a></li>
-              <li><a href="/crearEncuesta"> Crear nueva encuesta </a></li>
-              <li><a href="/verEncuestas"> Ver encuestas </a></li>
-            </ul>
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Llamado <span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="/Llamar">Llamar</a></li>
-            </ul>
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">BD <span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="/Subir">Subir archivo</a></li>
-              <li><a href="/VerAudios">Exportar Audios</a></li>
-            </ul>
-          </li>
-        </ul>
-        <ul class="nav navbar-nav navbar-left">
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-               aria-expanded="false"> Proyecto <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a href="/crearProyecto"> Crear Nuevo Proyecto </a></li>
-              <li><a href="#"> Ver Proyectos Actuales </a></li>
-            </ul>
-          </li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-               aria-expanded="false">Bienvenido Usuario! <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a href="/profile">Ver Perfil</a></li>
-              <li><a href="/logout">Cerrar Sesión</a></li>
-            </ul>
-          </li>
-        </ul>
-        <form class="navbar-form navbar-right">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-resource.js"></script>
+  <script type="text/javascript" src="/js/myCtrl.js"></script>
+</head>
+<body data-spy="scroll" data-target=".bs-docs-sidebar">
+<div class="jumbotron masthead">
+  <div class="splash"> <img src="img/home-banner-bg12.jpg" alt=""> </div>
+  <div class="splash"> <img src="img/home-banner-bg2.jpg" alt=""> </div>
+  <div class="splash"> <img src="img/home-banner-bg3.jpg" alt=""> </div>
+  <div class="nav-agency">
+    <div class="navbar navbar-static-top">
+      <div class="navbar-inner">
+        <div class="container"> <a class="brand" href="index.html"> <img src="img/Logo.png" alt=""></a>
+          <div id="main-nav">
+            <div class="nav-collapse collapse">
+              <ul class="nav">
+                <li class="active"><a href="index.html">Home</a> </li>
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"> Opciones <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="/verUsuario">Ver Usuarios</a></li>
+                    <li><a href="/crearUsuario">Crear Usuario</a></li>
+                    <li><a href="/verEncuestados">Ver Entrevistados</a></li>
+                    <li><a href="/AgregarEncuestado">Agregar Entrevistado</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"> Encuesta <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="/verEncuestas">Ver Encuesta</a></li>
+                    <li><a href="/crearEncuesta"> Crear nueva encuesta </a></li>
+                    <li><a href="#"> Ver encuestas </a></li>
+                  </ul>
+                </li>
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> LLamado <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="/Llamar">Llamar</a></li>
+                  </ul>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">BD <span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="/Subir">Subir archivo</a></li>
+                    <li><a href="/VerAudios">Exportar Audios</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"> Proyecto <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="/crearProyecto"> Crear Nuevo Proyecto </a></li>
+                    <li><a href="#"> Ver Proyectos Actuales </a></li>
+                  </ul>
+                </li>
+                      <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                             aria-expanded="false">{{user.username}}<span class="caret"></span></a>
+                          <ul class="dropdown-menu">
+                              <li><a href="/profile">Ver Perfil</a></li>
+                              <li><a href="/logout">Cerrar Sesión</a></li>
+                          </ul>
+                      </li>
+              </ul>
+            </div>
           </div>
-          <button type="submit" class="btn btn-default"> Buscar llamadas </button>
-        </form>
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-  </nav>
-
-  <h1> {{title}} </h1>
-
-  <div class="container">
-
-    <div class="jumbotron text-center">
-      <h1><span class="fa fa-lock"></span> {{title2 + user.username}}</h1>
-      <h2><span class="fa fa-lock"></span> Esta es la pagina de inicio, busca en las pestañas superiores</h2>
+        </div>
+      </div>
     </div>
   </div>
-  </body>
+  <div class="container show-case-item">
+    <h1>INNOVACION & CONNECTIVIDAD<br></h1>
+    <p>Software CATI es la combinacion perfecta entre innovación y desempeño que logra una conectividad segura entre usuarios registrados .</p>
+    <a href="/Llamar" class="bigbtn">LLama Ahora!</a>
+    <div class="clearfix"> </div>
+  </div>
+  <div class="container show-case-item">
+    <h1>La simplicidad es algo bueno<br></h1>
+    <p>Reciclando la simplicidad y eficacia de los telefonos del siglo pasado. CATI entrega un servicio de llamado que emula a su homologo del siglo con anterior</p>
+    <a href="/Llamar" class="bigbtn">LLama Ahora!</a>
+    <div class="clearfix"> </div>
+  </div>
+  <div class="container show-case-item">
+    <h1>Connectividad rápida y eficaz <br></h1>
+    <p>Con tecnología de punto y con apoyo de la mundialmente conocida aplicación Skype. CATI entrega un servicio eficaz logrando una real conectividad a nivel mundial.</p>
+    <a href="/Llamar" class="bigbtn">LLama Ahora!</a>
+    <div class="clearfix"> </div>
+  </div>
+  <div id="banner-pagination">
+    <ul>
+      <li><a href="#" class="active" rel="0"> <img src="img/slidedot-active.png" alt=""></a></li>
+      <li><a href="#" rel="1"> <img src="img/slidedot.png" alt=""></a></li>
+      <li><a href="#" rel="2"> <img src="img/slidedot.png" alt=""></a></li>
+    </ul>
+  </div>
+</div>
+<div class="container">
+  <div class="marketing">
+    <p class="marketing-byline"> 
+
+    </div>
+    </p>
+    <hr class="soften">
+    <div class="row-fluid">
+      <div class="span4"> <img src="img/responsive.png" alt="">
+        <h2> <span class="firstword">Intergaz rapida y facil</span> Layout</h2>
+        <p class="features"> Manteniendo la elegancia y la estetica, se logra mantener un facil manejo de la interfaz de usuario.</p>
+      </div>
+      <div class="span4"> <img src="img/think-creative.png" alt="">
+        <h2> <span class="firstword"> Inspirador</span> </h2>
+        <p> Dado a su gran integración de herramientas y su fácil manejo. CATI otorga una gran inspiración para futuros desarroladores.</p>
+      </div>
+      <div class="span4"> <img src="img/core-values.png" alt="">
+        <h2> <span class="firstword">Testeado</span> & Garantizado</h2>
+        <p> Probado y acompañado de la compañia mundialmente reconocida, Skype. CATI entrega fiabilidad en el servicio entregado.</p>
+      </div>
+    </div>
+    <hr class="soften">
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <div class="row-fluid">
+      <div class="span12">
+        <blockquote>
+          <p class="testimonial">Algunas personas sueñan con hacer grandes cosas, mientras otras están despiertas y las hacen.</p>
+          <p class="name"><b></b></p>
+        </blockquote>
+      </div>
+    </div>
+    <hr class="soften1">
+    <div class="row-fluid">
+      <div class="span3">
+        <h4>Navegacion</h4>
+        <ul class="footer-links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Work</a></li>
+          <li><a href="#">Elements</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+      <div class="span3 MT70">
+        <h4>Link de Utilidad</h4>
+        <ul class="footer-links">
+          <li><a href="https://www.usm.cl">www.usm.cl</a></li>
+          <li><a href="https://www.industrias.usm.cl">www.industrias.usm.cl</a></li>
+          <li><a href="https://www.inf.utfsm.cl">www.inf.utfsm.cl</a></li>
+          <li><a href="https://www.siga.usm.cl">www.siga.usm.cl</a></li>
+        </ul>
+      </div>
+      <div class="span3 MT70">
+        <h4>Redes Sociales</h4>
+        <p></p>
+        <ul class="footer_social clearfix">
+          <li><a href="#" class="footer_facebook">Facebook</a></li>
+          <li><a href="#" class="footer_twitter">Twitter</a></li>
+          <li><a href="#" class="footer_googleplus">Google+</a></li>
+          <li><a href="#" class="footer_rss">RSS</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr class="soften1 copyhr">
+    <div class="row-fluid copyright">
+      <div class="span12">Copyright &copy; 2016. ADSW</div>
+    </div>
+  </div>
+</footer>
+<script src="http://platform.twitter.com/widgets.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/google-code-prettify/prettify.js"></script>
+<script src="js/bootstrap-transition.js"></script>
+<script src="js/bootstrap-alert.js"></script>
+<script src="js/bootstrap-modal.js"></script>
+<script src="js/bootstrap-dropdown.js"></script>
+<script src="js/bootstrap-scrollspy.js"></script>
+<script src="js/bootstrap-tab.js"></script>
+<script src="js/bootstrap-tooltip.js"></script>
+<script src="js/bootstrap-popover.js"></script>
+<script src="js/bootstrap-button.js"></script>
+<script src="js/bootstrap-collapse.js"></script>
+<script src="js/bootstrap-carousel.js"></script>
+<script src="js/bootstrap-typeahead.js"></script>
+<script src="js/bootstrap-affix.js"></script>
+<script src="js/application.js"></script>
+<script src="js/superfish.js"></script>
+<script src="js/custom.js"></script>
+<script>
+$(document).ready(function () {
+    var showCaseItems = $('.show-case-item').hide();
+    var splashes = $('.splash').hide();
+    splashes.eq(0).show();
+    showCaseItems.eq(0).show();
+    var prevIndex = -1;
+    var nextIndex = 0;
+    var currentIndex = 0;
+    $('#banner-pagination li a').click(function () {
+        nextIndex = parseInt($(this).attr('rel'));
+        if (nextIndex != currentIndex) {
+            $('#banner-pagination li a').html('<img src="img/slidedot.png" alt="slide">');
+            $(this).html('<img src="img/slidedot-active.png" alt="slide">');
+            currentIndex = nextIndex;
+            if (prevIndex < 0) prevIndex = 0;
+            splashes.eq(prevIndex).css({
+                opacity: 1
+            }).animate({
+                opacity: 0
+            }, 500, function () {
+                $(this).hide();
+            });
+            splashes.eq(nextIndex).show().css({
+                opacity: 0
+            }).animate({
+                opacity: 1
+            }, 500, function () {});
+            showCaseItems.eq(prevIndex).css({
+                opacity: 1
+            }).animate({
+                opacity: 0
+            }, 500, function () {
+                $(this).hide();
+                showCaseItems.eq(nextIndex).show().css({
+                    opacity: 0
+                }).animate({
+                    opacity: 1
+                }, 200, function () {});
+            });
+            prevIndex = nextIndex;
+        }
+        return false;
+    });
+});
+</script>
+</body>
 </html>
