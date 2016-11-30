@@ -101,8 +101,6 @@ router.delete('/usuarios/:id', function(req,res,next){
 		return next(ex);
 	}
 });
-
-///////////////////////////////////////////////////////////////////////
 // agrega entrevistado a BD
 router.post('/entrevistado', function(req,res,next){
 	try{
@@ -136,6 +134,30 @@ router.get('/encuestados', function(req, res, next) {
 	}
 });
 
+router.post('/proyecto', function (req, res, next) {
+	try{
+		var resultado=[];
+		models.Proyecto.create({
+			nombre: req.body.form.nombre,
+			descripcion: req.body.form.descripcion
+		}).then(function (proyecto) {
+			var i;
+			for(i=0; i<req.body.selec.length; i++){
+				models.Proyecto_Entrevistado.create({
+					EntrevistadoId: req.body.selec[i],
+					ProyectoId: proyecto.id
+				}).then(function (proyecto_entrevistado) {
+					resultado.push(proyecto_entrevistado);
+				});
+			}
+			resultado.push(proyecto);
+			res.json(proyecto);
+		});
+	} catch(ex){
+		console.error("Internal eror:"+ex);
+		return next(ex);
+	}
+});
 //GET projects
 router.get('/projects', function(req, res, next) {
     try {

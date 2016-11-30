@@ -11,10 +11,10 @@ var mysql = require('mysql');
 var connection = mysql.createConnection({
     host     : 'localhost',
     user     : 'root',
-    password : 'mysqlroot'
+    password : 'root'
 });
 
-connection.query('USE ADSW');
+connection.query('USE new_schema');
 
 // expose this function to our app using module.exports
 module.exports = function(passport) {
